@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modern Library System</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="header-left">
+                <h1 class="header-title">📚 Modern Library</h1>
+            </div>
+            <nav class="header-nav">
+                <!-- Added Discover button to navigate back to home -->
+                <button id="nav-discover" class="nav-button">Discover</button>
+                <button id="nav-books" class="nav-button">Books</button>
+                <button id="nav-users" class="nav-button admin-only"
+                    style="display: none;">Users</button>
+                <button id="nav-borrows" class="nav-button admin-only"
+                    style="display: none;">Borrows</button>
+                <button id="nav-my-borrows" class="nav-button user-only"
+                    style="display: none;">My Borrows</button>
+            </nav>
+            <div class="header-right">
+                <span id="welcome-message" style="display: none;"></span>
+                <button id="nav-login" class="nav-button">Login</button>
+                <button id="nav-logout" class="nav-button"
+                    style="display: none;">Logout</button>
+            </div>
+        </header>
+
+        <main id="main-content">
+            <!-- Replaced static images with animated book and page swapping animations -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">Discover Your Next Great Read</h2>
+                    <p class="hero-subtitle">Join our community of book lovers
+                        and explore thousands of titles</p>
+
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">📖</div>
+                            <h3>Expand Your Mind</h3>
+                            <p>Reading enhances knowledge, improves focus, and
+                                opens new perspectives on the world.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🧠</div>
+                            <h3>Boost Creativity</h3>
+                            <p>Stories inspire imagination and help you think in
+                                new ways, unlocking creative potential.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">😌</div>
+                            <h3>Reduce Stress</h3>
+                            <p>Immerse yourself in captivating narratives and
+                                find peace in the world of books.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🌍</div>
+                            <h3>Connect Globally</h3>
+                            <p>Explore diverse cultures and perspectives through
+                                literature from around the world.</p>
+                        </div>
+                    </div>
+
+                    <button id="hero-login-btn" class="hero-cta-button">Start
+                        Reading Today</button>
+                </div>
+
+                <!-- New animated books section with page-flipping and book stacking animations -->
+                <div class="hero-animations">
+                    <div class="books-container">
+                        <!-- Animated book stack -->
+                        <div class="book-stack">
+                            <div class="book book-1">
+                                <div class="book-spine"></div>
+                                <div class="book-cover">
+                                    <div class="book-title">Gain knowledge</div>
+                                </div>
+                            </div>
+                            <div class="book book-2">
+                                <div class="book-spine"></div>
+                                <div class="book-cover">
+                                    <div class="book-title">Digital Dreams</div>
+                                </div>
+                            </div>
+                            <div class="book book-3">
+                                <div class="book-spine"></div>
+                                <div class="book-cover">
+                                    <div class="book-title">Future Tales</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Animated page flip -->
+                        <div class="page-flip-container">
+                            <div class="page-flip">
+                                <div class="page page-front">
+                                    <div class="page-content">
+                                        <h3>Chapter 1</h3>
+                                        <p>Begin your journey</p>
+                                    </div>
+                                </div>
+                                <div class="page page-back">
+                                    <div class="page-content">
+                                        <h3>Chapter 2</h3>
+                                        <p>Continue reading</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating books animation -->
+                        <div class="floating-books">
+                            <div class="float-book float-1">📕</div>
+                            <div class="float-book float-2">📗</div>
+                            <div class="float-book float-3">📘</div>
+                            <div class="float-book float-4">📙</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="auth-modal-title">Login</h2>
+                <form id="auth-form">
+                    <label for="auth-username">Username:</label>
+                    <input type="text" id="auth-username" required>
+
+                    <label for="auth-password">Password:</label>
+                    <input type="password" id="auth-password" required>
+
+                    <div id="register-fields" style="display: none;">
+                        <label for="auth-email">Email:</label>
+                        <input type="email" id="auth-email">
+                    </div>
+
+                    <button type="submit" id="auth-submit-button">Login</button>
+                    <p id="toggle-auth-mode-container">
+                        <a href="#" id="toggle-auth-mode">Need an account?
+                            Register</a>
+                    </p>
+                    <p id="auth-message" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+
+        <div id="book-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2 id="book-modal-title">Add New Book</h2>
+                <form id="book-form">
+                    <input type="hidden" id="book-id">
+                    <label for="book-title">Title:</label>
+                    <input type="text" id="book-title" required>
+
+                    <label for="book-author">Author:</label>
+                    <input type="text" id="book-author" required>
+
+                    <label for="book-category">Category:</label>
+                    <input type="text" id="book-category" required>
+
+                    <label for="book-rent">Rent Per Day:</label>
+                    <input type="number" id="book-rent" step="0.01" required>
+
+                    <label for="book-available">Available:</label>
+                    <input type="checkbox" id="book-available">
+
+                    <button type="submit" id="submit-book-button">Save
+                        Book</button>
+                    <p id="book-message" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

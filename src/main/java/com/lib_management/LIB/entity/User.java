@@ -28,13 +28,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @jakarta.validation.constraints.NotBlank(message = "Username is required")
     @Column(nullable = false, unique = true)
     private String username;
 
+    @jakarta.validation.constraints.NotBlank(message = "Email is required")
     @Email(message = "Please provide a valid email address")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @jakarta.validation.constraints.NotBlank(message = "Password is required")
     @Column(nullable = false)
     private String password;
 

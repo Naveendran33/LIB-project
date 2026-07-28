@@ -17,7 +17,7 @@ public class UserController {
 
     // ✅ Register (open for all)
     @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
+    public User registerUser(@jakarta.validation.Valid @RequestBody User user) {
         return userService.registerUser(user);
     }
 
@@ -30,7 +30,7 @@ public class UserController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/admin/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
+    public User updateUser(@PathVariable Long id, @jakarta.validation.Valid @RequestBody User updatedUser) {
         return userService.updateUser(id, updatedUser);
     }
 

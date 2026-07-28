@@ -28,14 +28,13 @@ public class SecurityConfig {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-/* Corrected and refined SecurityConfig */
-
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
     .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
     .requestMatchers("/auth/login", "/api/users/register").permitAll()
+    .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll() // Added Swagger endpoints
     // Allow anyone to view/search books (GET)
     .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
     // Admin-only book management

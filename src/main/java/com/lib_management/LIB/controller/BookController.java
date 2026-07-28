@@ -33,13 +33,13 @@ public class BookController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/admin")
-    public Book addBook(@RequestBody Book book){
+    public Book addBook(@jakarta.validation.Valid @RequestBody Book book){
         return bookService.addBook(book);
     }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/admin/{id}")
-    public Book updateBook(@PathVariable Long id, @RequestBody Book bookDetails){
+    public Book updateBook(@PathVariable Long id, @jakarta.validation.Valid @RequestBody Book bookDetails){
         if (id == null || bookDetails == null) {
             throw new NullPointerException("Book id and details cannot be null");
         }
